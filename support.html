@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>サポート | うちの子日記</title>
+    <link rel="stylesheet" href="./site-language.css" />
     <style>
       body {
         margin: 0;
@@ -38,79 +39,590 @@
       li {
         line-height: 1.8;
       }
+
+      a {
+        color: #c76686;
+      }
     </style>
   </head>
   <body>
     <main>
-      <h1>うちの子日記 サポート</h1>
-      <p>最終更新: 2026-06-02</p>
-      <p>うちの子日記をご利用いただきありがとうございます。</p>
-      <p>
+      <div class="site-tools" data-site-controls></div>
+      <h1 data-i18n="title">うちの子日記 サポート</h1>
+      <p data-i18n="updated">最終更新: 2026-06-02</p>
+      <p data-i18n="thanks">うちの子日記をご利用いただきありがとうございます。</p>
+      <p data-i18n="contactIntro">
         不具合報告、ご質問、アカウント削除のご相談は、下記までご連絡ください。
       </p>
       <p><a href="mailto:nktkng1128@gmail.com">nktkng1128@gmail.com</a></p>
-      <p>
+      <p data-i18n="contactDetails">
         お問い合わせの際は、利用中の端末、OS、ログイン方法、発生している画面やメッセージ、再現手順を添えていただけると確認がスムーズです。
       </p>
 
-      <h2>よくある質問</h2>
-      <h3>ログインできない</h3>
+      <h2 data-i18n="faqTitle">よくある質問</h2>
+      <h3 data-i18n="loginTitle">ログインできない</h3>
       <ul>
-        <li>メールアドレスやパスワードが正しいか確認してください</li>
-        <li>パスワードを忘れた場合は、ログイン画面から再設定できます</li>
-        <li>Google や Apple で登録した場合は、初回と同じログイン方法でお試しください</li>
-        <li>メール認証後に反映されない場合は、確認リンクを開いたあとアプリ側で最新状態に更新してください</li>
+        <li data-i18n="loginItem1">
+          メールアドレスやパスワードが正しいか確認してください
+        </li>
+        <li data-i18n="loginItem2">
+          パスワードを忘れた場合は、ログイン画面から再設定できます
+        </li>
+        <li data-i18n="loginItem3">
+          Google や Apple で登録した場合は、初回と同じログイン方法でお試しください
+        </li>
+        <li data-i18n="loginItem4">
+          メール認証後に反映されない場合は、確認リンクを開いたあとアプリ側で最新状態に更新してください
+        </li>
       </ul>
 
-      <h3>日記が保存できない</h3>
+      <h3 data-i18n="saveTitle">日記が保存できない</h3>
       <ul>
-        <li>ネットワーク接続を確認してください</li>
-        <li>本文は 60 文字以内です</li>
-        <li>日記は本文、写真、タグのどれか 1 つ以上があれば保存できます</li>
-        <li>写真のアップロード中は少し時間がかかることがあります</li>
+        <li data-i18n="saveItem1">ネットワーク接続を確認してください</li>
+        <li data-i18n="saveItem2">本文は 60 文字以内です</li>
+        <li data-i18n="saveItem3">
+          日記は本文、写真、タグのどれか 1 つ以上があれば保存できます
+        </li>
+        <li data-i18n="saveItem4">
+          写真のアップロード中は少し時間がかかることがあります
+        </li>
       </ul>
 
-      <h3>通知が届かない</h3>
+      <h3 data-i18n="notificationTitle">通知が届かない</h3>
       <ul>
-        <li>端末の通知権限がオンになっているか確認してください</li>
-        <li>設定の「通知」で日記リマインドがオンになっているか確認してください</li>
-        <li>その日の日記をすでに書いている場合、その日のリマインドは送られません</li>
+        <li data-i18n="notificationItem1">
+          端末の通知権限がオンになっているか確認してください
+        </li>
+        <li data-i18n="notificationItem2">
+          設定の「通知」で日記リマインドがオンになっているか確認してください
+        </li>
+        <li data-i18n="notificationItem3">
+          その日の日記をすでに書いている場合、その日のリマインドは送られません
+        </li>
       </ul>
 
-      <h3>広告削除が反映されない / 復元したい</h3>
+      <h3 data-i18n="purchaseTitle">広告削除が反映されない / 復元したい</h3>
       <ul>
-        <li>広告削除の購入と復元は iPhone / iPad 版で利用できます</li>
-        <li>機種変更や再インストール後は、同じ Apple ID で「購入を復元」をお試しください</li>
-        <li>Store に接続できない場合は、通信状況や App Store のサインイン状態をご確認ください</li>
+        <li data-i18n="purchaseItem1">
+          広告削除の購入と復元は iPhone / iPad 版で利用できます
+        </li>
+        <li data-i18n="purchaseItem2">
+          機種変更や再インストール後は、同じ Apple ID で「購入を復元」をお試しください
+        </li>
+        <li data-i18n="purchaseItem3">
+          Store に接続できない場合は、通信状況や App Store のサインイン状態をご確認ください
+        </li>
       </ul>
 
-      <h3>アルバムについて</h3>
+      <h3 data-i18n="albumTitle">アルバムについて</h3>
       <ul>
-        <li>アルバムには、各週で選んだ 1 枚ずつの写真が使われます</li>
-        <li>日記に複数枚の写真がある場合でも、アルバムに使えるのは 1 枚目の写真です</li>
-        <li>完成版は画面で確認できます。端末へ残す場合は、表示後にスクリーンショットを撮り、枠線に合わせて切り取ってください</li>
+        <li data-i18n="albumItem1">
+          アルバムには、各週で選んだ 1 枚ずつの写真が使われます
+        </li>
+        <li data-i18n="albumItem2">
+          日記に複数枚の写真がある場合でも、アルバムに使えるのは 1 枚目の写真です
+        </li>
+        <li data-i18n="albumItem3">
+          完成版は画面で確認できます。端末へ残す場合は、表示後にスクリーンショットを撮り、枠線に合わせて切り取ってください
+        </li>
       </ul>
 
-      <h3>アカウントを削除したい</h3>
+      <h3 data-i18n="deleteTitle">アカウントを削除したい</h3>
       <ul>
-        <li>アプリ内の「設定」→「アカウント」→「アカウントを削除」から手続きできます</li>
-        <li>安全確認のため、再ログイン後でないと削除できない場合があります</li>
-        <li>アプリを開けない場合は、メールで削除希望をご連絡ください</li>
+        <li data-i18n="deleteItem1">
+          アプリ内の「設定」→「アカウント」→「アカウントを削除」から手続きできます
+        </li>
+        <li data-i18n="deleteItem2">
+          安全確認のため、再ログイン後でないと削除できない場合があります
+        </li>
+        <li data-i18n="deleteItem3">
+          アプリを開けない場合は、メールで削除希望をご連絡ください
+        </li>
       </ul>
 
-      <h2>対応について</h2>
-      <p>
+      <h2 data-i18n="responseTitle">対応について</h2>
+      <p data-i18n="responseBody">
         内容確認のうえ順次ご返信します。返信までにお時間をいただく場合がありますので、あらかじめご了承ください。
       </p>
 
-      <h2>関連ページ</h2>
-      <p>
+      <h2 data-i18n="relatedTitle">関連ページ</h2>
+      <p data-i18n="relatedBody">
         アカウント削除の方法や、データの取り扱いの詳細は以下をご確認ください。
       </p>
       <ul>
-        <li><a href="./privacy.html">プライバシーポリシー</a></li>
-        <li><a href="./delete-account.html">アカウント削除ガイド</a></li>
+        <li><a href="./privacy.html" data-i18n="privacyLink">プライバシーポリシー</a></li>
+        <li>
+          <a href="./delete-account.html" data-i18n="deleteGuideLink"
+            >アカウント削除ガイド</a
+          >
+        </li>
       </ul>
     </main>
+    <script src="./site-language.js"></script>
+    <script>
+      window.UchinokoSiteLanguage.applyPage({
+        translations: {
+          ja: {
+            metaTitle: "サポート | うちの子日記",
+            title: "うちの子日記 サポート",
+            updated: "最終更新: 2026-06-02",
+            thanks: "うちの子日記をご利用いただきありがとうございます。",
+            contactIntro:
+              "不具合報告、ご質問、アカウント削除のご相談は、下記までご連絡ください。",
+            contactDetails:
+              "お問い合わせの際は、利用中の端末、OS、ログイン方法、発生している画面やメッセージ、再現手順を添えていただけると確認がスムーズです。",
+            faqTitle: "よくある質問",
+            loginTitle: "ログインできない",
+            loginItem1: "メールアドレスやパスワードが正しいか確認してください",
+            loginItem2: "パスワードを忘れた場合は、ログイン画面から再設定できます",
+            loginItem3:
+              "Google や Apple で登録した場合は、初回と同じログイン方法でお試しください",
+            loginItem4:
+              "メール認証後に反映されない場合は、確認リンクを開いたあとアプリ側で最新状態に更新してください",
+            saveTitle: "日記が保存できない",
+            saveItem1: "ネットワーク接続を確認してください",
+            saveItem2: "本文は 60 文字以内です",
+            saveItem3:
+              "日記は本文、写真、タグのどれか 1 つ以上があれば保存できます",
+            saveItem4: "写真のアップロード中は少し時間がかかることがあります",
+            notificationTitle: "通知が届かない",
+            notificationItem1: "端末の通知権限がオンになっているか確認してください",
+            notificationItem2:
+              "設定の「通知」で日記リマインドがオンになっているか確認してください",
+            notificationItem3:
+              "その日の日記をすでに書いている場合、その日のリマインドは送られません",
+            purchaseTitle: "広告削除が反映されない / 復元したい",
+            purchaseItem1: "広告削除の購入と復元は iPhone / iPad 版で利用できます",
+            purchaseItem2:
+              "機種変更や再インストール後は、同じ Apple ID で「購入を復元」をお試しください",
+            purchaseItem3:
+              "Store に接続できない場合は、通信状況や App Store のサインイン状態をご確認ください",
+            albumTitle: "アルバムについて",
+            albumItem1: "アルバムには、各週で選んだ 1 枚ずつの写真が使われます",
+            albumItem2:
+              "日記に複数枚の写真がある場合でも、アルバムに使えるのは 1 枚目の写真です",
+            albumItem3:
+              "完成版は画面で確認できます。端末へ残す場合は、表示後にスクリーンショットを撮り、枠線に合わせて切り取ってください",
+            deleteTitle: "アカウントを削除したい",
+            deleteItem1:
+              "アプリ内の「設定」→「アカウント」→「アカウントを削除」から手続きできます",
+            deleteItem2:
+              "安全確認のため、再ログイン後でないと削除できない場合があります",
+            deleteItem3: "アプリを開けない場合は、メールで削除希望をご連絡ください",
+            responseTitle: "対応について",
+            responseBody:
+              "内容確認のうえ順次ご返信します。返信までにお時間をいただく場合がありますので、あらかじめご了承ください。",
+            relatedTitle: "関連ページ",
+            relatedBody:
+              "アカウント削除の方法や、データの取り扱いの詳細は以下をご確認ください。",
+            privacyLink: "プライバシーポリシー",
+            deleteGuideLink: "アカウント削除ガイド",
+          },
+          en: {
+            metaTitle: "Support | Uchinoko Diary",
+            title: "Uchinoko Diary Support",
+            updated: "Last updated: 2026-06-02",
+            thanks: "Thank you for using Uchinoko Diary.",
+            contactIntro:
+              "If you want to report a bug, ask a question, or request account deletion support, please contact us below.",
+            contactDetails:
+              "To help us review faster, please include your device, OS, sign-in method, the screen or message you saw, and the steps to reproduce the issue.",
+            faqTitle: "Frequently Asked Questions",
+            loginTitle: "I cannot sign in",
+            loginItem1: "Please check whether your email address and password are correct.",
+            loginItem2: "If you forgot your password, you can reset it from the sign-in screen.",
+            loginItem3:
+              "If you registered with Google or Apple, please try the same sign-in method you used the first time.",
+            loginItem4:
+              "If email verification is not reflected, open the verification link and then refresh the latest account state in the App.",
+            saveTitle: "I cannot save a diary entry",
+            saveItem1: "Please check your network connection.",
+            saveItem2: "The text body is limited to 60 characters.",
+            saveItem3:
+              "A diary entry can be saved if it has at least one of the following: text, photos, or tags.",
+            saveItem4: "Uploading photos may take a little time.",
+            notificationTitle: "Notifications are not arriving",
+            notificationItem1: "Please check that notification permission is enabled on your device.",
+            notificationItem2:
+              "Please check that diary reminders are enabled in Settings → Notifications.",
+            notificationItem3:
+              "If you have already written today’s diary entry, no reminder is sent for that day.",
+            purchaseTitle: "Ad removal is not reflected / I want to restore it",
+            purchaseItem1: "Ad-removal purchase and restore are available on iPhone / iPad.",
+            purchaseItem2:
+              "After reinstalling or changing devices, please try Restore Purchases with the same Apple ID.",
+            purchaseItem3:
+              "If the Store cannot be reached, please check your connection and your App Store sign-in status.",
+            albumTitle: "About albums",
+            albumItem1: "Albums use one selected photo for each week.",
+            albumItem2:
+              "Even if a diary entry has multiple photos, only the first photo can be used in the album.",
+            albumItem3:
+              "You can view the finished version on screen. If you want to keep it on your device, take a screenshot and crop it to fit the frame.",
+            deleteTitle: "I want to delete my account",
+            deleteItem1:
+              "You can start the process from Settings → Account → Delete Account in the App.",
+            deleteItem2:
+              "For safety, you may need to sign in again before deletion is allowed.",
+            deleteItem3:
+              "If you cannot open the App, please contact us by email to request deletion.",
+            responseTitle: "Response time",
+            responseBody:
+              "We will reply after reviewing the details. Please note that it may take some time for us to respond.",
+            relatedTitle: "Related pages",
+            relatedBody:
+              "For details on account deletion and how data is handled, please check the pages below.",
+            privacyLink: "Privacy Policy",
+            deleteGuideLink: "Account deletion guide",
+          },
+          es: {
+            metaTitle: "Soporte | Uchinoko Diary",
+            title: "Soporte de Uchinoko Diary",
+            updated: "Última actualización: 2026-06-02",
+            thanks: "Gracias por usar Uchinoko Diary.",
+            contactIntro:
+              "Si quieres informar de un error, hacer una consulta o pedir ayuda con la eliminación de la cuenta, contáctanos aquí.",
+            contactDetails:
+              "Para revisar el caso más rápido, incluye el dispositivo, el sistema operativo, el método de inicio de sesión, la pantalla o el mensaje que viste y los pasos para reproducir el problema.",
+            faqTitle: "Preguntas frecuentes",
+            loginTitle: "No puedo iniciar sesión",
+            loginItem1:
+              "Comprueba si el correo electrónico y la contraseña son correctos.",
+            loginItem2:
+              "Si olvidaste tu contraseña, puedes restablecerla desde la pantalla de inicio de sesión.",
+            loginItem3:
+              "Si te registraste con Google o Apple, prueba con el mismo método que usaste la primera vez.",
+            loginItem4:
+              "Si la verificación del correo no se refleja, abre el enlace de verificación y después actualiza el estado de la cuenta en la App.",
+            saveTitle: "No puedo guardar una entrada del diario",
+            saveItem1: "Comprueba tu conexión de red.",
+            saveItem2: "El texto está limitado a 60 caracteres.",
+            saveItem3:
+              "Una entrada se puede guardar si tiene al menos uno de estos elementos: texto, fotos o etiquetas.",
+            saveItem4: "La subida de fotos puede tardar un poco.",
+            notificationTitle: "No llegan las notificaciones",
+            notificationItem1:
+              "Comprueba que el permiso de notificaciones esté activado en tu dispositivo.",
+            notificationItem2:
+              "Comprueba que el recordatorio del diario esté activado en Ajustes → Notificaciones.",
+            notificationItem3:
+              "Si ya escribiste la entrada de hoy, no se envía recordatorio ese día.",
+            purchaseTitle:
+              "La compra para quitar anuncios no se refleja / Quiero restaurarla",
+            purchaseItem1:
+              "La compra y la restauración para quitar anuncios están disponibles en iPhone / iPad.",
+            purchaseItem2:
+              "Después de reinstalar o cambiar de dispositivo, prueba Restaurar compras con el mismo Apple ID.",
+            purchaseItem3:
+              "Si no puedes conectarte a la tienda, revisa la red y el inicio de sesión de App Store.",
+            albumTitle: "Sobre los álbumes",
+            albumItem1: "Los álbumes usan una foto seleccionada por cada semana.",
+            albumItem2:
+              "Aunque una entrada tenga varias fotos, solo la primera puede usarse en el álbum.",
+            albumItem3:
+              "Puedes ver la versión final en pantalla. Si quieres guardarla en tu dispositivo, haz una captura y recórtala para ajustarla al marco.",
+            deleteTitle: "Quiero eliminar mi cuenta",
+            deleteItem1:
+              "Puedes hacerlo desde Ajustes → Cuenta → Eliminar cuenta en la App.",
+            deleteItem2:
+              "Por seguridad, puede que tengas que volver a iniciar sesión antes de poder eliminarla.",
+            deleteItem3:
+              "Si no puedes abrir la App, contáctanos por correo para solicitar la eliminación.",
+            responseTitle: "Tiempo de respuesta",
+            responseBody:
+              "Responderemos después de revisar los detalles. Ten en cuenta que la respuesta puede tardar un poco.",
+            relatedTitle: "Páginas relacionadas",
+            relatedBody:
+              "Para más información sobre la eliminación de la cuenta y el tratamiento de datos, consulta las páginas siguientes.",
+            privacyLink: "Política de privacidad",
+            deleteGuideLink: "Guía para eliminar la cuenta",
+          },
+          pt: {
+            metaTitle: "Suporte | Uchinoko Diary",
+            title: "Suporte do Uchinoko Diary",
+            updated: "Última atualização: 2026-06-02",
+            thanks: "Obrigado por usar o Uchinoko Diary.",
+            contactIntro:
+              "Se você quiser relatar um problema, tirar uma dúvida ou pedir ajuda com a exclusão da conta, fale conosco abaixo.",
+            contactDetails:
+              "Para analisarmos mais rápido, inclua o dispositivo, o sistema operacional, o método de login, a tela ou mensagem exibida e os passos para reproduzir o problema.",
+            faqTitle: "Perguntas frequentes",
+            loginTitle: "Não consigo entrar",
+            loginItem1: "Verifique se o e-mail e a senha estão corretos.",
+            loginItem2:
+              "Se você esqueceu a senha, pode redefini-la na tela de login.",
+            loginItem3:
+              "Se você se cadastrou com Google ou Apple, tente o mesmo método usado na primeira vez.",
+            loginItem4:
+              "Se a verificação de e-mail não aparecer como concluída, abra o link de verificação e depois atualize o estado da conta no App.",
+            saveTitle: "Não consigo salvar uma entrada do diário",
+            saveItem1: "Verifique sua conexão de rede.",
+            saveItem2: "O texto está limitado a 60 caracteres.",
+            saveItem3:
+              "A entrada pode ser salva se tiver pelo menos um destes itens: texto, fotos ou tags.",
+            saveItem4: "O envio de fotos pode levar um pouco de tempo.",
+            notificationTitle: "As notificações não chegam",
+            notificationItem1:
+              "Verifique se a permissão de notificações está ativada no dispositivo.",
+            notificationItem2:
+              "Verifique se o lembrete do diário está ativado em Configurações → Notificações.",
+            notificationItem3:
+              "Se você já escreveu a entrada de hoje, nenhum lembrete será enviado nesse dia.",
+            purchaseTitle:
+              "A remoção de anúncios não apareceu / Quero restaurar a compra",
+            purchaseItem1:
+              "A compra e a restauração da remoção de anúncios estão disponíveis no iPhone / iPad.",
+            purchaseItem2:
+              "Depois de reinstalar o app ou trocar de aparelho, tente Restaurar compras com o mesmo Apple ID.",
+            purchaseItem3:
+              "Se não conseguir acessar a loja, verifique a rede e o login da App Store.",
+            albumTitle: "Sobre os álbuns",
+            albumItem1: "Os álbuns usam uma foto escolhida para cada semana.",
+            albumItem2:
+              "Mesmo que uma entrada tenha várias fotos, apenas a primeira pode ser usada no álbum.",
+            albumItem3:
+              "Você pode ver a versão final na tela. Se quiser guardar no aparelho, tire uma captura de tela e recorte para encaixar na moldura.",
+            deleteTitle: "Quero excluir minha conta",
+            deleteItem1:
+              "Você pode iniciar o processo em Configurações → Conta → Excluir conta no App.",
+            deleteItem2:
+              "Por segurança, talvez seja necessário fazer login novamente antes de excluir.",
+            deleteItem3:
+              "Se você não conseguir abrir o App, entre em contato por e-mail para solicitar a exclusão.",
+            responseTitle: "Tempo de resposta",
+            responseBody:
+              "Responderemos após analisar os detalhes. Observe que nossa resposta pode levar algum tempo.",
+            relatedTitle: "Páginas relacionadas",
+            relatedBody:
+              "Para mais detalhes sobre exclusão da conta e tratamento de dados, consulte as páginas abaixo.",
+            privacyLink: "Política de privacidade",
+            deleteGuideLink: "Guia de exclusão da conta",
+          },
+          zh: {
+            metaTitle: "支持 | Uchinoko Diary",
+            title: "Uchinoko Diary 支持",
+            updated: "最后更新：2026-06-02",
+            thanks: "感谢你使用 Uchinoko Diary。",
+            contactIntro:
+              "如果你想报告问题、提出疑问，或咨询账户删除，请通过以下方式联系我们。",
+            contactDetails:
+              "为了更快确认情况，请附上你使用的设备、系统版本、登录方式、出现的画面或提示信息，以及复现步骤。",
+            faqTitle: "常见问题",
+            loginTitle: "无法登录",
+            loginItem1: "请确认电子邮箱地址和密码是否正确。",
+            loginItem2: "如果忘记密码，可以在登录页面重设密码。",
+            loginItem3:
+              "如果你是通过 Google 或 Apple 注册的，请使用第一次相同的登录方式重试。",
+            loginItem4:
+              "如果邮箱验证后没有反映，请打开验证链接后，在应用中刷新最新账户状态。",
+            saveTitle: "无法保存日记",
+            saveItem1: "请检查网络连接。",
+            saveItem2: "正文最多 60 个字符。",
+            saveItem3: "只要有正文、照片或标签中的任意一种，就可以保存日记。",
+            saveItem4: "上传照片可能需要一点时间。",
+            notificationTitle: "收不到通知",
+            notificationItem1: "请确认设备已开启通知权限。",
+            notificationItem2:
+              "请确认在“设置 → 通知”中已开启日记提醒。",
+            notificationItem3:
+              "如果你当天已经写过日记，当天就不会再发送提醒。",
+            purchaseTitle: "去广告没有生效 / 我想恢复购买",
+            purchaseItem1: "去广告购买和恢复功能可在 iPhone / iPad 版使用。",
+            purchaseItem2:
+              "重装应用或更换设备后，请用相同的 Apple ID 尝试“恢复购买”。",
+            purchaseItem3:
+              "如果无法连接商店，请检查网络和 App Store 登录状态。",
+            albumTitle: "关于相册",
+            albumItem1: "相册会使用每周所选的 1 张照片。",
+            albumItem2: "即使一篇日记有多张照片，相册也只能使用第 1 张。",
+            albumItem3:
+              "你可以在画面上查看完成版。如果想保存在设备中，请截图后按照边框裁剪。",
+            deleteTitle: "我想删除账户",
+            deleteItem1: "你可以在应用内通过“设置 → 账户 → 删除账户”开始操作。",
+            deleteItem2: "为了安全，删除前可能需要重新登录。",
+            deleteItem3: "如果无法打开应用，请通过邮件联系我们申请删除。",
+            responseTitle: "回复时间",
+            responseBody:
+              "我们会在确认内容后依次回复。回复可能需要一些时间，敬请谅解。",
+            relatedTitle: "相关页面",
+            relatedBody: "关于账户删除方式和数据处理详情，请查看以下页面。",
+            privacyLink: "隐私政策",
+            deleteGuideLink: "账户删除指南",
+          },
+          ko: {
+            metaTitle: "지원 | Uchinoko Diary",
+            title: "Uchinoko Diary 지원",
+            updated: "마지막 업데이트: 2026-06-02",
+            thanks: "Uchinoko Diary를 이용해 주셔서 감사합니다.",
+            contactIntro:
+              "버그 신고, 문의, 계정 삭제 관련 상담이 필요하면 아래로 연락해 주세요.",
+            contactDetails:
+              "빠르게 확인할 수 있도록 사용 중인 기기, OS, 로그인 방법, 표시된 화면이나 메시지, 재현 방법을 함께 알려 주세요.",
+            faqTitle: "자주 묻는 질문",
+            loginTitle: "로그인이 되지 않아요",
+            loginItem1: "이메일 주소와 비밀번호가 올바른지 확인해 주세요.",
+            loginItem2: "비밀번호를 잊었다면 로그인 화면에서 재설정할 수 있어요.",
+            loginItem3:
+              "Google 또는 Apple로 가입했다면 처음 사용한 같은 로그인 방법으로 다시 시도해 주세요.",
+            loginItem4:
+              "이메일 인증이 반영되지 않으면 인증 링크를 연 뒤 앱에서 최신 계정 상태를 새로고침해 주세요.",
+            saveTitle: "일기를 저장할 수 없어요",
+            saveItem1: "네트워크 연결 상태를 확인해 주세요.",
+            saveItem2: "본문은 60자까지 입력할 수 있어요.",
+            saveItem3: "본문, 사진, 태그 중 하나 이상이 있으면 저장할 수 있어요.",
+            saveItem4: "사진 업로드에는 조금 시간이 걸릴 수 있어요.",
+            notificationTitle: "알림이 오지 않아요",
+            notificationItem1: "기기에서 알림 권한이 켜져 있는지 확인해 주세요.",
+            notificationItem2:
+              "설정 → 알림에서 일기 리마인더가 켜져 있는지 확인해 주세요.",
+            notificationItem3:
+              "오늘 일기를 이미 작성했다면 그날의 리마인더는 전송되지 않아요.",
+            purchaseTitle: "광고 제거가 반영되지 않아요 / 복원하고 싶어요",
+            purchaseItem1: "광고 제거 구매와 복원은 iPhone / iPad에서 이용할 수 있어요.",
+            purchaseItem2:
+              "재설치하거나 기기를 바꾼 뒤에는 같은 Apple ID로 구매 복원을 시도해 주세요.",
+            purchaseItem3:
+              "Store에 연결되지 않으면 네트워크와 App Store 로그인 상태를 확인해 주세요.",
+            albumTitle: "앨범에 대해",
+            albumItem1: "앨범에는 각 주에 선택한 사진 1장씩이 사용돼요.",
+            albumItem2:
+              "일기에 사진이 여러 장 있어도 앨범에는 첫 번째 사진만 사용할 수 있어요.",
+            albumItem3:
+              "완성본은 화면에서 확인할 수 있어요. 기기에 남기려면 스크린샷을 찍고 프레임에 맞게 잘라 주세요.",
+            deleteTitle: "계정을 삭제하고 싶어요",
+            deleteItem1: "앱의 설정 → 계정 → 계정 삭제에서 진행할 수 있어요.",
+            deleteItem2: "안전을 위해 삭제 전에 다시 로그인해야 할 수 있어요.",
+            deleteItem3: "앱을 열 수 없다면 이메일로 삭제를 요청해 주세요.",
+            responseTitle: "답변 안내",
+            responseBody:
+              "내용을 확인한 뒤 순서대로 답변드립니다. 답변까지 시간이 걸릴 수 있는 점 양해 부탁드려요.",
+            relatedTitle: "관련 페이지",
+            relatedBody: "계정 삭제 방법과 데이터 처리에 대한 자세한 내용은 아래 페이지를 확인해 주세요.",
+            privacyLink: "개인정보 처리방침",
+            deleteGuideLink: "계정 삭제 안내",
+          },
+          th: {
+            metaTitle: "ช่วยเหลือ | Uchinoko Diary",
+            title: "ช่วยเหลือ Uchinoko Diary",
+            updated: "อัปเดตล่าสุด: 2026-06-02",
+            thanks: "ขอบคุณที่ใช้ Uchinoko Diary",
+            contactIntro:
+              "หากต้องการแจ้งปัญหา สอบถาม หรือขอความช่วยเหลือเรื่องการลบบัญชี โปรดติดต่อเราด้านล่าง",
+            contactDetails:
+              "เพื่อให้เราตรวจสอบได้เร็วขึ้น โปรดแจ้งอุปกรณ์ ระบบปฏิบัติการ วิธีเข้าสู่ระบบ หน้าจอหรือข้อความที่พบ และขั้นตอนที่ทำให้เกิดปัญหา",
+            faqTitle: "คำถามที่พบบ่อย",
+            loginTitle: "เข้าสู่ระบบไม่ได้",
+            loginItem1: "โปรดตรวจสอบว่าอีเมลและรหัสผ่านถูกต้อง",
+            loginItem2:
+              "หากลืมรหัสผ่าน คุณสามารถรีเซ็ตได้จากหน้าจอเข้าสู่ระบบ",
+            loginItem3:
+              "หากสมัครด้วย Google หรือ Apple โปรดลองใช้วิธีเข้าสู่ระบบเดียวกับครั้งแรก",
+            loginItem4:
+              "หากการยืนยันอีเมลยังไม่แสดงผล ให้เปิดลิงก์ยืนยันแล้วกลับมาอัปเดตสถานะบัญชีล่าสุดในแอป",
+            saveTitle: "บันทึกไดอารีไม่ได้",
+            saveItem1: "โปรดตรวจสอบการเชื่อมต่อเครือข่าย",
+            saveItem2: "ข้อความหลักจำกัดไม่เกิน 60 ตัวอักษร",
+            saveItem3:
+              "รายการไดอารีสามารถบันทึกได้หากมีอย่างน้อยหนึ่งอย่าง: ข้อความ รูปภาพ หรือแท็ก",
+            saveItem4: "การอัปโหลดรูปภาพอาจใช้เวลาสักครู่",
+            notificationTitle: "ไม่ได้รับการแจ้งเตือน",
+            notificationItem1:
+              "โปรดตรวจสอบว่าเปิดสิทธิ์การแจ้งเตือนในอุปกรณ์แล้ว",
+            notificationItem2:
+              "โปรดตรวจสอบว่าเปิดการเตือนไดอารีใน ตั้งค่า → การแจ้งเตือน แล้ว",
+            notificationItem3:
+              "หากคุณเขียนไดอารีของวันนี้แล้ว จะไม่มีการส่งเตือนในวันนั้นอีก",
+            purchaseTitle: "ปิดโฆษณาแล้วยังไม่เปลี่ยน / อยากกู้คืนการซื้อ",
+            purchaseItem1:
+              "การซื้อและการกู้คืนการปิดโฆษณาใช้ได้บน iPhone / iPad",
+            purchaseItem2:
+              "หลังติดตั้งใหม่หรือเปลี่ยนอุปกรณ์ โปรดลองกู้คืนการซื้อด้วย Apple ID เดิม",
+            purchaseItem3:
+              "หากเชื่อมต่อ Store ไม่ได้ โปรดตรวจสอบเครือข่ายและสถานะการลงชื่อเข้าใช้ App Store",
+            albumTitle: "เกี่ยวกับอัลบั้ม",
+            albumItem1: "อัลบั้มจะใช้รูปที่เลือกไว้สัปดาห์ละ 1 รูป",
+            albumItem2:
+              "แม้ไดอารีหนึ่งรายการจะมีหลายรูป แต่รูปแรกเท่านั้นที่ใช้ในอัลบั้มได้",
+            albumItem3:
+              "คุณสามารถดูเวอร์ชันสำเร็จบนหน้าจอได้ หากต้องการเก็บไว้ในอุปกรณ์ ให้แคปหน้าจอแล้วครอปให้พอดีกับกรอบ",
+            deleteTitle: "ต้องการลบบัญชี",
+            deleteItem1: "เริ่มได้จาก ตั้งค่า → บัญชี → ลบบัญชี ในแอป",
+            deleteItem2:
+              "เพื่อความปลอดภัย คุณอาจต้องเข้าสู่ระบบอีกครั้งก่อนจึงจะลบได้",
+            deleteItem3:
+              "หากเปิดแอปไม่ได้ โปรดติดต่อเราทางอีเมลเพื่อขอลบบัญชี",
+            responseTitle: "ระยะเวลาตอบกลับ",
+            responseBody:
+              "เราจะตอบกลับหลังจากตรวจสอบรายละเอียดแล้ว โปรดทราบว่าอาจใช้เวลาสักระยะในการตอบกลับ",
+            relatedTitle: "หน้าที่เกี่ยวข้อง",
+            relatedBody:
+              "หากต้องการดูรายละเอียดเกี่ยวกับการลบบัญชีและการจัดการข้อมูล โปรดตรวจสอบหน้าด้านล่าง",
+            privacyLink: "นโยบายความเป็นส่วนตัว",
+            deleteGuideLink: "คู่มือการลบบัญชี",
+          },
+          id: {
+            metaTitle: "Bantuan | Uchinoko Diary",
+            title: "Bantuan Uchinoko Diary",
+            updated: "Terakhir diperbarui: 2026-06-02",
+            thanks: "Terima kasih telah menggunakan Uchinoko Diary.",
+            contactIntro:
+              "Jika kamu ingin melaporkan bug, bertanya, atau meminta bantuan penghapusan akun, silakan hubungi kami di bawah ini.",
+            contactDetails:
+              "Agar kami bisa meninjau lebih cepat, mohon sertakan perangkat, sistem operasi, metode login, layar atau pesan yang muncul, dan langkah untuk memunculkan masalah.",
+            faqTitle: "Pertanyaan yang sering ditanyakan",
+            loginTitle: "Saya tidak bisa masuk",
+            loginItem1: "Silakan periksa apakah alamat email dan kata sandimu sudah benar.",
+            loginItem2:
+              "Jika lupa kata sandi, kamu bisa meresetnya dari layar login.",
+            loginItem3:
+              "Jika kamu mendaftar dengan Google atau Apple, coba gunakan metode login yang sama seperti saat pertama kali.",
+            loginItem4:
+              "Jika verifikasi email belum terlihat, buka tautan verifikasi lalu segarkan status akun terbaru di Aplikasi.",
+            saveTitle: "Saya tidak bisa menyimpan jurnal",
+            saveItem1: "Silakan periksa koneksi jaringanmu.",
+            saveItem2: "Teks utama dibatasi hingga 60 karakter.",
+            saveItem3:
+              "Entri jurnal bisa disimpan jika memiliki setidaknya salah satu dari berikut ini: teks, foto, atau tag.",
+            saveItem4: "Mengunggah foto mungkin memerlukan sedikit waktu.",
+            notificationTitle: "Notifikasi tidak masuk",
+            notificationItem1:
+              "Silakan periksa apakah izin notifikasi sudah diaktifkan di perangkatmu.",
+            notificationItem2:
+              "Silakan periksa apakah pengingat jurnal sudah aktif di Pengaturan → Notifikasi.",
+            notificationItem3:
+              "Jika kamu sudah menulis jurnal hari ini, tidak akan ada pengingat lagi pada hari itu.",
+            purchaseTitle:
+              "Penghapusan iklan belum muncul / Saya ingin memulihkannya",
+            purchaseItem1:
+              "Pembelian dan pemulihan penghapusan iklan tersedia di iPhone / iPad.",
+            purchaseItem2:
+              "Setelah memasang ulang atau mengganti perangkat, coba Pulihkan Pembelian dengan Apple ID yang sama.",
+            purchaseItem3:
+              "Jika Store tidak bisa diakses, periksa koneksi dan status login App Store-mu.",
+            albumTitle: "Tentang album",
+            albumItem1: "Album menggunakan satu foto yang dipilih untuk tiap minggu.",
+            albumItem2:
+              "Walaupun satu entri punya beberapa foto, hanya foto pertama yang bisa dipakai di album.",
+            albumItem3:
+              "Versi jadi bisa dilihat di layar. Jika ingin menyimpannya di perangkat, ambil screenshot lalu potong sesuai bingkainya.",
+            deleteTitle: "Saya ingin menghapus akun",
+            deleteItem1:
+              "Kamu bisa memulainya dari Pengaturan → Akun → Hapus akun di dalam Aplikasi.",
+            deleteItem2:
+              "Untuk keamanan, kamu mungkin perlu masuk lagi sebelum penghapusan diizinkan.",
+            deleteItem3:
+              "Jika kamu tidak bisa membuka Aplikasi, silakan hubungi kami lewat email untuk meminta penghapusan.",
+            responseTitle: "Waktu tanggapan",
+            responseBody:
+              "Kami akan membalas setelah meninjau detailnya. Mohon dipahami bahwa kami mungkin memerlukan sedikit waktu untuk merespons.",
+            relatedTitle: "Halaman terkait",
+            relatedBody:
+              "Untuk detail tentang penghapusan akun dan cara data ditangani, silakan lihat halaman berikut.",
+            privacyLink: "Kebijakan privasi",
+            deleteGuideLink: "Panduan penghapusan akun",
+          },
+        },
+      });
+    </script>
   </body>
 </html>

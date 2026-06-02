@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>メール認証 | うちの子日記</title>
+    <link rel="stylesheet" href="./site-language.css" />
     <style>
       :root {
         --bg: #f3f8f1;
@@ -40,6 +41,12 @@
         width: min(560px, calc(100% - 32px));
         margin: 0 auto;
         padding: 40px 0;
+      }
+
+      .top-tools {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 14px;
       }
 
       .brand {
@@ -188,38 +195,45 @@
   </head>
   <body>
     <main class="wrap">
+      <div class="top-tools site-tools" data-site-controls></div>
       <div class="brand">
         <span class="brand-dot"></span>
-        <span>うちの子日記</span>
+        <span data-i18n="brandLabel">うちの子日記</span>
       </div>
 
       <section class="card">
         <div id="statusChip" class="status-chip">
           <span id="statusIcon" class="spinner" aria-hidden="true"></span>
-          <span id="statusText">確認中</span>
+          <span id="statusText" data-i18n="loadingChip">確認中</span>
         </div>
 
-        <h1 id="title">メール認証を確認しています</h1>
-        <p id="message">リンクを確認しています。数秒ほどお待ちください。</p>
+        <h1 id="title" data-i18n="loadingTitle">メール認証を確認しています</h1>
+        <p id="message" data-i18n="loadingBody">
+          リンクを確認しています。数秒ほどお待ちください。
+        </p>
         <p id="detail" class="detail" hidden></p>
 
         <div id="actions" class="actions" hidden>
-          <button id="backButton" class="button" type="button">前の画面に戻る</button>
+          <button id="backButton" class="button" type="button" data-i18n="backButton">
+            前の画面に戻る
+          </button>
           <a
             id="continueButton"
             class="link-button"
             href="#"
             hidden
             rel="noopener noreferrer"
+            data-i18n="continueButton"
             >続ける</a
           >
         </div>
 
-        <p class="footnote">
+        <p class="footnote" data-i18n="footnote">
           認証後は、うちの子日記アプリに戻って画面を進めてください。
         </p>
       </section>
     </main>
+    <script src="./site-language.js"></script>
 
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
@@ -242,6 +256,296 @@
       const backButton = document.getElementById("backButton");
       const continueButton = document.getElementById("continueButton");
 
+      let translate = (key, values) => key;
+      let currentViewState = { kind: "loading" };
+
+      const page = window.UchinokoSiteLanguage.applyPage({
+        translations: {
+          ja: {
+            metaTitle: "メール認証 | うちの子日記",
+            brandLabel: "うちの子日記",
+            loadingChip: "確認中",
+            loadingTitle: "メール認証を確認しています",
+            loadingBody: "リンクを確認しています。数秒ほどお待ちください。",
+            backButton: "前の画面に戻る",
+            continueButton: "続ける",
+            footnote:
+              "認証後は、うちの子日記アプリに戻って画面を進めてください。",
+            successChip: "認証完了",
+            successTitle: "メール認証が完了しました",
+            successBody: "メール認証が完了しました。",
+            successBodyWithEmail: "{email} の認証が完了しました。",
+            successDetail:
+              "うちの子日記アプリに戻って、「メール認証が完了したら押す」を押してください。",
+            errorChip: "エラー",
+            errorTitle: "認証を完了できませんでした",
+            errorGeneric: "認証ページの処理に失敗しました。",
+            errorRetryDetail:
+              "アプリに戻って確認メールを再送し、最新のリンクからもう一度お試しください。",
+            invalidModeError: "このページではメール認証のみ処理できます。",
+            invalidModeDetail:
+              "うちの子日記アプリに戻って、もう一度確認メールをお試しください。",
+            invalidParamsError: "認証リンクの情報が不足しています。",
+            invalidParamsDetail:
+              "メール内の最新リンクから、もう一度開いてください。",
+            expiredActionCode: "この認証リンクの有効期限が切れています。",
+            invalidActionCode: "この認証リンクは無効か、すでに使われています。",
+            userDisabled: "このアカウントは現在利用できません。",
+            userNotFound: "対象のアカウントが見つかりません。",
+            networkError: "通信に失敗しました。通信状況をご確認ください。",
+          },
+          en: {
+            metaTitle: "Email Verification | Uchinoko Diary",
+            brandLabel: "Uchinoko Diary",
+            loadingChip: "Checking",
+            loadingTitle: "Checking your email verification",
+            loadingBody: "We are checking your link. Please wait a few seconds.",
+            backButton: "Go back",
+            continueButton: "Continue",
+            footnote:
+              "After verification, return to Uchinoko Diary and continue from the App.",
+            successChip: "Verified",
+            successTitle: "Email verification is complete",
+            successBody: "Your email verification is complete.",
+            successBodyWithEmail: "{email} has been verified.",
+            successDetail:
+              "Return to Uchinoko Diary and tap the button for after email verification is complete.",
+            errorChip: "Error",
+            errorTitle: "Verification could not be completed",
+            errorGeneric: "The verification page could not finish processing.",
+            errorRetryDetail:
+              "Return to the App, resend the verification email, and try again from the newest link.",
+            invalidModeError:
+              "This page can only process email verification.",
+            invalidModeDetail:
+              "Return to Uchinoko Diary and try sending the verification email again.",
+            invalidParamsError: "The verification link is missing information.",
+            invalidParamsDetail:
+              "Please open the newest link from the email again.",
+            expiredActionCode: "This verification link has expired.",
+            invalidActionCode:
+              "This verification link is invalid or has already been used.",
+            userDisabled: "This account is currently unavailable.",
+            userNotFound: "The target account could not be found.",
+            networkError: "The network request failed. Please check your connection.",
+          },
+          es: {
+            metaTitle: "Verificación de correo | Uchinoko Diary",
+            brandLabel: "Uchinoko Diary",
+            loadingChip: "Comprobando",
+            loadingTitle: "Comprobando la verificación del correo",
+            loadingBody: "Estamos comprobando el enlace. Espera unos segundos.",
+            backButton: "Volver",
+            continueButton: "Continuar",
+            footnote:
+              "Después de verificarlo, vuelve a Uchinoko Diary y continúa desde la App.",
+            successChip: "Verificado",
+            successTitle: "La verificación del correo se completó",
+            successBody: "La verificación del correo se completó.",
+            successBodyWithEmail: "Se verificó {email}.",
+            successDetail:
+              "Vuelve a Uchinoko Diary y pulsa el botón para cuando la verificación del correo haya terminado.",
+            errorChip: "Error",
+            errorTitle: "No se pudo completar la verificación",
+            errorGeneric:
+              "La página de verificación no pudo completar el proceso.",
+            errorRetryDetail:
+              "Vuelve a la App, reenvía el correo de verificación y prueba otra vez con el enlace más reciente.",
+            invalidModeError:
+              "Esta página solo puede procesar la verificación del correo.",
+            invalidModeDetail:
+              "Vuelve a Uchinoko Diary e intenta enviar otra vez el correo de verificación.",
+            invalidParamsError:
+              "Falta información en el enlace de verificación.",
+            invalidParamsDetail:
+              "Vuelve a abrir el enlace más reciente del correo.",
+            expiredActionCode: "Este enlace de verificación ha caducado.",
+            invalidActionCode:
+              "Este enlace de verificación no es válido o ya se ha usado.",
+            userDisabled: "Esta cuenta no está disponible actualmente.",
+            userNotFound: "No se encontró la cuenta correspondiente.",
+            networkError:
+              "La comunicación falló. Revisa tu conexión de red.",
+          },
+          pt: {
+            metaTitle: "Verificação de e-mail | Uchinoko Diary",
+            brandLabel: "Uchinoko Diary",
+            loadingChip: "Verificando",
+            loadingTitle: "Verificando seu e-mail",
+            loadingBody: "Estamos verificando o link. Aguarde alguns segundos.",
+            backButton: "Voltar",
+            continueButton: "Continuar",
+            footnote:
+              "Depois da verificação, volte ao Uchinoko Diary e continue pelo App.",
+            successChip: "Verificado",
+            successTitle: "A verificação de e-mail foi concluída",
+            successBody: "A verificação de e-mail foi concluída.",
+            successBodyWithEmail: "{email} foi verificado.",
+            successDetail:
+              "Volte ao Uchinoko Diary e toque no botão para quando a verificação de e-mail terminar.",
+            errorChip: "Erro",
+            errorTitle: "Não foi possível concluir a verificação",
+            errorGeneric:
+              "A página de verificação não conseguiu concluir o processo.",
+            errorRetryDetail:
+              "Volte ao App, reenvie o e-mail de verificação e tente novamente pelo link mais recente.",
+            invalidModeError:
+              "Esta página só pode processar a verificação de e-mail.",
+            invalidModeDetail:
+              "Volte ao Uchinoko Diary e tente enviar o e-mail de verificação outra vez.",
+            invalidParamsError:
+              "Faltam informações no link de verificação.",
+            invalidParamsDetail:
+              "Abra novamente o link mais recente do e-mail.",
+            expiredActionCode: "Este link de verificação expirou.",
+            invalidActionCode:
+              "Este link de verificação é inválido ou já foi usado.",
+            userDisabled: "Esta conta não está disponível no momento.",
+            userNotFound: "A conta correspondente não foi encontrada.",
+            networkError: "A comunicação falhou. Verifique sua conexão.",
+          },
+          zh: {
+            metaTitle: "邮箱验证 | Uchinoko Diary",
+            brandLabel: "Uchinoko Diary",
+            loadingChip: "确认中",
+            loadingTitle: "正在确认邮箱验证",
+            loadingBody: "正在检查链接，请稍等几秒。",
+            backButton: "返回上一页",
+            continueButton: "继续",
+            footnote:
+              "验证完成后，请返回 Uchinoko Diary，并在应用内继续操作。",
+            successChip: "已验证",
+            successTitle: "邮箱验证已完成",
+            successBody: "邮箱验证已完成。",
+            successBodyWithEmail: "{email} 已完成验证。",
+            successDetail:
+              "请返回 Uchinoko Diary，并点击邮箱验证完成后的按钮继续。",
+            errorChip: "错误",
+            errorTitle: "无法完成验证",
+            errorGeneric: "验证页面无法完成处理。",
+            errorRetryDetail:
+              "请返回应用，重新发送验证邮件，并使用最新链接再试一次。",
+            invalidModeError: "此页面只能处理邮箱验证。",
+            invalidModeDetail:
+              "请返回 Uchinoko Diary，再次尝试发送验证邮件。",
+            invalidParamsError: "验证链接缺少必要信息。",
+            invalidParamsDetail: "请重新打开邮件中的最新链接。",
+            expiredActionCode: "此验证链接已过期。",
+            invalidActionCode: "此验证链接无效，或已被使用。",
+            userDisabled: "此账户当前不可用。",
+            userNotFound: "找不到对应的账户。",
+            networkError: "通信失败，请检查网络连接。",
+          },
+          ko: {
+            metaTitle: "이메일 인증 | Uchinoko Diary",
+            brandLabel: "Uchinoko Diary",
+            loadingChip: "확인 중",
+            loadingTitle: "이메일 인증을 확인하고 있어요",
+            loadingBody: "링크를 확인하고 있습니다. 잠시만 기다려 주세요.",
+            backButton: "이전 화면으로",
+            continueButton: "계속",
+            footnote:
+              "인증이 끝나면 Uchinoko Diary로 돌아가 앱에서 계속 진행해 주세요.",
+            successChip: "인증 완료",
+            successTitle: "이메일 인증이 완료되었어요",
+            successBody: "이메일 인증이 완료되었어요.",
+            successBodyWithEmail: "{email} 인증이 완료되었어요.",
+            successDetail:
+              "Uchinoko Diary로 돌아가 이메일 인증이 끝난 뒤의 버튼을 눌러 주세요.",
+            errorChip: "오류",
+            errorTitle: "인증을 완료할 수 없었어요",
+            errorGeneric: "인증 페이지 처리를 완료하지 못했어요.",
+            errorRetryDetail:
+              "앱으로 돌아가 인증 메일을 다시 보내고 가장 최신 링크로 다시 시도해 주세요.",
+            invalidModeError:
+              "이 페이지에서는 이메일 인증만 처리할 수 있어요.",
+            invalidModeDetail:
+              "Uchinoko Diary로 돌아가 인증 메일을 다시 시도해 주세요.",
+            invalidParamsError:
+              "인증 링크에 필요한 정보가 부족해요.",
+            invalidParamsDetail: "이메일의 최신 링크를 다시 열어 주세요.",
+            expiredActionCode: "이 인증 링크는 만료되었어요.",
+            invalidActionCode:
+              "이 인증 링크는 유효하지 않거나 이미 사용되었어요.",
+            userDisabled: "이 계정은 현재 사용할 수 없어요.",
+            userNotFound: "해당 계정을 찾을 수 없어요.",
+            networkError: "통신에 실패했어요. 네트워크를 확인해 주세요.",
+          },
+          th: {
+            metaTitle: "ยืนยันอีเมล | Uchinoko Diary",
+            brandLabel: "Uchinoko Diary",
+            loadingChip: "กำลังตรวจสอบ",
+            loadingTitle: "กำลังตรวจสอบการยืนยันอีเมล",
+            loadingBody: "กำลังตรวจสอบลิงก์ กรุณารอสักครู่",
+            backButton: "กลับ",
+            continueButton: "ต่อไป",
+            footnote:
+              "หลังยืนยันเสร็จแล้ว ให้กลับไปที่ Uchinoko Diary และดำเนินการต่อในแอป",
+            successChip: "ยืนยันแล้ว",
+            successTitle: "ยืนยันอีเมลเสร็จสิ้นแล้ว",
+            successBody: "ยืนยันอีเมลเสร็จสิ้นแล้ว",
+            successBodyWithEmail: "ยืนยัน {email} เรียบร้อยแล้ว",
+            successDetail:
+              "กลับไปที่ Uchinoko Diary แล้วกดปุ่มสำหรับหลังยืนยันอีเมลเสร็จสิ้น",
+            errorChip: "ข้อผิดพลาด",
+            errorTitle: "ไม่สามารถยืนยันให้เสร็จสิ้นได้",
+            errorGeneric: "หน้าการยืนยันไม่สามารถดำเนินการให้เสร็จได้",
+            errorRetryDetail:
+              "กลับไปที่แอป ส่งอีเมลยืนยันอีกครั้ง แล้วลองใหม่จากลิงก์ล่าสุด",
+            invalidModeError:
+              "หน้านี้ใช้สำหรับยืนยันอีเมลเท่านั้น",
+            invalidModeDetail:
+              "กลับไปที่ Uchinoko Diary แล้วลองส่งอีเมลยืนยันอีกครั้ง",
+            invalidParamsError: "ลิงก์ยืนยันมีข้อมูลไม่ครบถ้วน",
+            invalidParamsDetail: "กรุณาเปิดลิงก์ล่าสุดจากอีเมลอีกครั้ง",
+            expiredActionCode: "ลิงก์ยืนยันนี้หมดอายุแล้ว",
+            invalidActionCode: "ลิงก์ยืนยันนี้ไม่ถูกต้องหรือถูกใช้ไปแล้ว",
+            userDisabled: "บัญชีนี้ไม่สามารถใช้งานได้ในขณะนี้",
+            userNotFound: "ไม่พบบัญชีที่เกี่ยวข้อง",
+            networkError: "การเชื่อมต่อล้มเหลว โปรดตรวจสอบเครือข่าย",
+          },
+          id: {
+            metaTitle: "Verifikasi email | Uchinoko Diary",
+            brandLabel: "Uchinoko Diary",
+            loadingChip: "Memeriksa",
+            loadingTitle: "Memeriksa verifikasi emailmu",
+            loadingBody: "Kami sedang memeriksa tautannya. Mohon tunggu sebentar.",
+            backButton: "Kembali",
+            continueButton: "Lanjutkan",
+            footnote:
+              "Setelah verifikasi selesai, kembali ke Uchinoko Diary dan lanjutkan dari Aplikasi.",
+            successChip: "Terverifikasi",
+            successTitle: "Verifikasi email selesai",
+            successBody: "Verifikasi email selesai.",
+            successBodyWithEmail: "{email} sudah diverifikasi.",
+            successDetail:
+              "Kembali ke Uchinoko Diary lalu tekan tombol setelah verifikasi email selesai.",
+            errorChip: "Kesalahan",
+            errorTitle: "Verifikasi tidak dapat diselesaikan",
+            errorGeneric: "Halaman verifikasi tidak dapat menyelesaikan proses.",
+            errorRetryDetail:
+              "Kembali ke Aplikasi, kirim ulang email verifikasi, lalu coba lagi dari tautan terbaru.",
+            invalidModeError:
+              "Halaman ini hanya dapat memproses verifikasi email.",
+            invalidModeDetail:
+              "Kembali ke Uchinoko Diary lalu coba kirim email verifikasi lagi.",
+            invalidParamsError:
+              "Tautan verifikasi tidak memiliki informasi yang cukup.",
+            invalidParamsDetail: "Silakan buka kembali tautan terbaru dari email.",
+            expiredActionCode: "Tautan verifikasi ini sudah kedaluwarsa.",
+            invalidActionCode:
+              "Tautan verifikasi ini tidak valid atau sudah digunakan.",
+            userDisabled: "Akun ini saat ini tidak tersedia.",
+            userNotFound: "Akun yang dimaksud tidak ditemukan.",
+            networkError: "Koneksi gagal. Silakan periksa jaringanmu.",
+          },
+        },
+        onRender({ t }) {
+          translate = t;
+          renderCurrentView();
+        },
+      });
+
       const params = new URLSearchParams(window.location.search);
       const mode = params.get("mode");
       const actionCode = params.get("oobCode");
@@ -262,89 +566,123 @@
         window.location.assign("about:blank");
       });
 
-      function setLoadingState(text, body) {
+      function renderCurrentView() {
+        if (currentViewState.kind === "success") {
+          renderSuccessState(currentViewState.email);
+          return;
+        }
+        if (currentViewState.kind === "error") {
+          renderErrorState(
+            currentViewState.messageKey,
+            currentViewState.detailKey,
+          );
+          return;
+        }
+        renderLoadingState();
+      }
+
+      function setLoadingState() {
+        currentViewState = { kind: "loading" };
+        renderLoadingState();
+      }
+
+      function renderLoadingState() {
         statusChip.classList.remove("error");
-        statusText.textContent = text;
+        statusText.textContent = translate("loadingChip");
         statusIcon.className = "spinner";
-        title.textContent = text;
-        message.textContent = body;
+        statusIcon.textContent = "";
+        title.textContent = translate("loadingTitle");
+        message.textContent = translate("loadingBody");
         detail.hidden = true;
+        detail.textContent = "";
         actions.hidden = true;
+        backButton.textContent = translate("backButton");
+        continueButton.textContent = translate("continueButton");
       }
 
       function setSuccessState(email) {
+        currentViewState = { kind: "success", email };
+        renderSuccessState(email);
+      }
+
+      function renderSuccessState(email) {
         statusChip.classList.remove("error");
-        statusText.textContent = "認証完了";
+        statusText.textContent = translate("successChip");
         statusIcon.className = "";
         statusIcon.textContent = "✓";
-        title.textContent = "メール認証が完了しました";
+        title.textContent = translate("successTitle");
         message.textContent = email
-          ? `${email} の認証が完了しました。`
-          : "メール認証が完了しました。";
+          ? translate("successBodyWithEmail", { email })
+          : translate("successBody");
         detail.hidden = false;
-        detail.textContent =
-          "うちの子日記アプリに戻って、「メール認証が完了したら押す」を押してください。";
+        detail.textContent = translate("successDetail");
         actions.hidden = false;
-        backButton.textContent = "前の画面に戻る";
+        backButton.textContent = translate("backButton");
+        continueButton.textContent = translate("continueButton");
 
         if (continueUrl) {
           continueButton.hidden = false;
           continueButton.href = continueUrl;
+        } else {
+          continueButton.hidden = true;
         }
       }
 
-      function setErrorState(errorMessage, extraMessage) {
+      function setErrorState(messageKey, detailKey) {
+        currentViewState = { kind: "error", messageKey, detailKey };
+        renderErrorState(messageKey, detailKey);
+      }
+
+      function renderErrorState(messageKey, detailKey) {
         statusChip.classList.add("error");
-        statusText.textContent = "エラー";
+        statusText.textContent = translate("errorChip");
         statusIcon.className = "";
         statusIcon.textContent = "!";
-        title.textContent = "認証を完了できませんでした";
-        message.textContent = errorMessage;
-        detail.hidden = !extraMessage;
-        detail.textContent = extraMessage || "";
+        title.textContent = translate("errorTitle");
+        message.textContent = translate(messageKey || "errorGeneric");
+        detail.hidden = !detailKey;
+        detail.textContent = detailKey ? translate(detailKey) : "";
         actions.hidden = false;
-        backButton.textContent = "前の画面に戻る";
+        backButton.textContent = translate("backButton");
+        continueButton.textContent = translate("continueButton");
         continueButton.hidden = true;
       }
 
       function errorMessageForCode(code) {
         switch (code) {
           case "auth/expired-action-code":
-            return "この認証リンクの有効期限が切れています。";
+            return "expiredActionCode";
           case "auth/invalid-action-code":
-            return "この認証リンクは無効か、すでに使われています。";
+            return "invalidActionCode";
           case "auth/user-disabled":
-            return "このアカウントは現在利用できません。";
+            return "userDisabled";
           case "auth/user-not-found":
-            return "対象のアカウントが見つかりません。";
+            return "userNotFound";
           case "auth/network-request-failed":
-            return "通信に失敗しました。通信状況をご確認ください。";
+            return "networkError";
           default:
-            return "認証ページの処理に失敗しました。";
+            return "errorGeneric";
         }
       }
 
       async function main() {
         if (mode !== "verifyEmail") {
           setErrorState(
-            "このページではメール認証のみ処理できます。",
-            "うちの子日記アプリに戻って、もう一度確認メールをお試しください。",
+            "invalidModeError",
+            "invalidModeDetail",
           );
           return;
         }
 
         if (!actionCode || !apiKey) {
           setErrorState(
-            "認証リンクの情報が不足しています。",
-            "メール内の最新リンクから、もう一度開いてください。",
+            "invalidParamsError",
+            "invalidParamsDetail",
           );
           return;
         }
 
-        setLoadingState(
-          "メール認証を確認しています",
-          "リンクを確認しています。数秒ほどお待ちください。",
-        );
+        setLoadingState();
 
         try {
           const app = initializeApp({
@@ -366,7 +704,7 @@
           console.error(error);
           setErrorState(
             errorMessageForCode(error?.code),
-            "アプリに戻って確認メールを再送し、最新のリンクからもう一度お試しください。",
+            "errorRetryDetail",
           );
         }
       }
