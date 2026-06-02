@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>メール認証 | うちの子日記</title>
+    <style>
+      :root {
+        --bg: #f3f8f1;
+        --card: #ffffff;
+        --ink: #2f4330;
+        --sub: #667866;
+        --line: #d7e5d1;
+        --primary: #5f8a57;
+        --primary-deep: #45633e;
+        --primary-soft: #eaf3e7;
+        --danger: #b14747;
+        --danger-soft: #fff2f2;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family:
+          "Hiragino Sans",
+          "Yu Gothic",
+          "Noto Sans JP",
+          sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.8), transparent 42%),
+          linear-gradient(180deg, #eef6ea 0%, var(--bg) 100%);
+      }
+
+      .wrap {
+        width: min(560px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 40px 0;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid var(--line);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .brand-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: linear-gradient(180deg, #8db97f 0%, var(--primary) 100%);
+      }
+
+      .card {
+        padding: 28px;
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        box-shadow: 0 24px 48px rgba(47, 67, 48, 0.1);
+      }
+
+      .status-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: var(--primary-soft);
+        color: var(--primary-deep);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .status-chip.error {
+        background: var(--danger-soft);
+        color: var(--danger);
+      }
+
+      .spinner {
+        width: 15px;
+        height: 15px;
+        border: 2px solid rgba(95, 138, 87, 0.2);
+        border-top-color: var(--primary);
+        border-radius: 50%;
+        animation: spin 0.9s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      h1 {
+        margin: 16px 0 12px;
+        font-size: clamp(28px, 6vw, 38px);
+        line-height: 1.25;
+      }
+
+      p {
+        margin: 0;
+        color: var(--sub);
+        line-height: 1.8;
+        font-size: 16px;
+      }
+
+      .detail {
+        margin-top: 12px;
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: #f8fbf7;
+        border: 1px solid rgba(215, 229, 209, 0.9);
+        font-size: 14px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .button,
+      .link-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        padding: 0 18px;
+        border-radius: 18px;
+        text-decoration: none;
+        font-weight: 800;
+        font-size: 15px;
+        cursor: pointer;
+      }
+
+      .button {
+        border: none;
+        background: var(--primary);
+        color: #ffffff;
+      }
+
+      .button.secondary,
+      .link-button {
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+      }
+
+      .footnote {
+        margin-top: 24px;
+        font-size: 13px;
+        color: var(--sub);
+      }
+
+      @media (max-width: 480px) {
+        .wrap {
+          width: calc(100% - 20px);
+          padding: 20px 0;
+        }
+
+        .card {
+          padding: 22px 18px;
+          border-radius: 24px;
+        }
+
+        .actions {
+          flex-direction: column;
+        }
+
+        .button,
+        .link-button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span>うちの子日記</span>
+      </div>
+
+      <section class="card">
+        <div id="statusChip" class="status-chip">
+          <span id="statusIcon" class="spinner" aria-hidden="true"></span>
+          <span id="statusText">確認中</span>
+        </div>
+
+        <h1 id="title">メール認証を確認しています</h1>
+        <p id="message">リンクを確認しています。数秒ほどお待ちください。</p>
+        <p id="detail" class="detail" hidden></p>
+
+        <div id="actions" class="actions" hidden>
+          <button id="backButton" class="button" type="button">前の画面に戻る</button>
+          <a
+            id="continueButton"
+            class="link-button"
+            href="#"
+            hidden
+            rel="noopener noreferrer"
+            >続ける</a
+          >
+        </div>
+
+        <p class="footnote">
+          認証後は、うちの子日記アプリに戻って画面を進めてください。
+        </p>
+      </section>
+    </main>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+      import {
+        applyActionCode,
+        checkActionCode,
+        getAuth,
+      } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+      const projectId = "uchinoko-diary-37e36";
+      const authDomain = "uchinoko-diary-37e36.firebaseapp.com";
+
+      const statusChip = document.getElementById("statusChip");
+      const statusIcon = document.getElementById("statusIcon");
+      const statusText = document.getElementById("statusText");
+      const title = document.getElementById("title");
+      const message = document.getElementById("message");
+      const detail = document.getElementById("detail");
+      const actions = document.getElementById("actions");
+      const backButton = document.getElementById("backButton");
+      const continueButton = document.getElementById("continueButton");
+
+      const params = new URLSearchParams(window.location.search);
+      const mode = params.get("mode");
+      const actionCode = params.get("oobCode");
+      const apiKey = params.get("apiKey");
+      const continueUrl = params.get("continueUrl");
+
+      backButton.addEventListener("click", () => {
+        if (window.history.length > 1) {
+          window.history.back();
+          return;
+        }
+
+        if (continueUrl) {
+          window.location.assign(continueUrl);
+          return;
+        }
+
+        window.location.assign("about:blank");
+      });
+
+      function setLoadingState(text, body) {
+        statusChip.classList.remove("error");
+        statusText.textContent = text;
+        statusIcon.className = "spinner";
+        title.textContent = text;
+        message.textContent = body;
+        detail.hidden = true;
+        actions.hidden = true;
+      }
+
+      function setSuccessState(email) {
+        statusChip.classList.remove("error");
+        statusText.textContent = "認証完了";
+        statusIcon.className = "";
+        statusIcon.textContent = "✓";
+        title.textContent = "メール認証が完了しました";
+        message.textContent = email
+          ? `${email} の認証が完了しました。`
+          : "メール認証が完了しました。";
+        detail.hidden = false;
+        detail.textContent =
+          "うちの子日記アプリに戻って、「メール認証が完了したら押す」を押してください。";
+        actions.hidden = false;
+        backButton.textContent = "前の画面に戻る";
+
+        if (continueUrl) {
+          continueButton.hidden = false;
+          continueButton.href = continueUrl;
+        }
+      }
+
+      function setErrorState(errorMessage, extraMessage) {
+        statusChip.classList.add("error");
+        statusText.textContent = "エラー";
+        statusIcon.className = "";
+        statusIcon.textContent = "!";
+        title.textContent = "認証を完了できませんでした";
+        message.textContent = errorMessage;
+        detail.hidden = !extraMessage;
+        detail.textContent = extraMessage || "";
+        actions.hidden = false;
+        backButton.textContent = "前の画面に戻る";
+        continueButton.hidden = true;
+      }
+
+      function errorMessageForCode(code) {
+        switch (code) {
+          case "auth/expired-action-code":
+            return "この認証リンクの有効期限が切れています。";
+          case "auth/invalid-action-code":
+            return "この認証リンクは無効か、すでに使われています。";
+          case "auth/user-disabled":
+            return "このアカウントは現在利用できません。";
+          case "auth/user-not-found":
+            return "対象のアカウントが見つかりません。";
+          case "auth/network-request-failed":
+            return "通信に失敗しました。通信状況をご確認ください。";
+          default:
+            return "認証ページの処理に失敗しました。";
+        }
+      }
+
+      async function main() {
+        if (mode !== "verifyEmail") {
+          setErrorState(
+            "このページではメール認証のみ処理できます。",
+            "うちの子日記アプリに戻って、もう一度確認メールをお試しください。",
+          );
+          return;
+        }
+
+        if (!actionCode || !apiKey) {
+          setErrorState(
+            "認証リンクの情報が不足しています。",
+            "メール内の最新リンクから、もう一度開いてください。",
+          );
+          return;
+        }
+
+        setLoadingState(
+          "メール認証を確認しています",
+          "リンクを確認しています。数秒ほどお待ちください。",
+        );
+
+        try {
+          const app = initializeApp({
+            apiKey,
+            authDomain,
+            projectId,
+          });
+          const auth = getAuth(app);
+
+          const actionInfo = await checkActionCode(auth, actionCode);
+          const email =
+            actionInfo?.data?.email ||
+            actionInfo?.data?.previousEmail ||
+            "";
+
+          await applyActionCode(auth, actionCode);
+          setSuccessState(email);
+        } catch (error) {
+          console.error(error);
+          setErrorState(
+            errorMessageForCode(error?.code),
+            "アプリに戻って確認メールを再送し、最新のリンクからもう一度お試しください。",
+          );
+        }
+      }
+
+      main();
+    </script>
+  </body>
+</html>
